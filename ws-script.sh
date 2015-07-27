@@ -38,8 +38,10 @@ sed -i "/listen = 127.0.0.1:9000/c\listen = /var/run/php-fpm/php-fpm.sock" /etc/
 systemctl start php-fpm
 
 #DEFAULT CONF FILE /etc/nginx/conf.d/default.conf
-touch /etc/nginx/conf.d/
-echo
+
+echo >> /etc/nginx/conf.d/default.conf
+
+echo -e
 "server {
     listen       80;
     server_name  $SERVER_IP;
@@ -63,10 +65,8 @@ echo
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         include fastcgi_params;
     }
-}"
->> /etc/nginx/conf.d/default.conf
+}" >> /etc/nginx/conf.d/default.conf
 
 #END OF DEFAULT CONF FILE
 
 systemctl start nginx
-
