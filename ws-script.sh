@@ -5,12 +5,10 @@ printf %$(tput cols)s |tr " " "="
 echo   "CENTOS WEB SERVER AUTO-INSTALLER"
 printf %$(tput cols)s |tr " " "="
 
-yum update
-
 printf "Server IP:"
 read SERVER_IP
 
-
+yum update
 yum install epel-release
 
 #NGINX CONFIG
@@ -39,10 +37,8 @@ systemctl start php-fpm
 
 #DEFAULT CONF FILE /etc/nginx/conf.d/default.conf
 
-echo >> /etc/nginx/conf.d/default.conf
-
-echo -e
-"server {
+cat > /etc/nginx/conf.d/default.conf << EOF 
+server {
     listen       80;
     server_name  $SERVER_IP;
 
@@ -65,7 +61,8 @@ echo -e
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         include fastcgi_params;
     }
-}" >> /etc/nginx/conf.d/default.conf
+}
+EOF
 
 #END OF DEFAULT CONF FILE
 
