@@ -17,8 +17,7 @@ if ! rpm -qa | grep -qw epel-release;
 if ! rpm -qa | grep -qw nginx;
         then
                 yum install nginx
-# comment next line if your server support ipv6
-                sed '37d' /etc/nginx/nginx.conf
+                sed '37d' /etc/nginx/nginx.conf # IF IPV6 SUPPORTED - DELETE.
         else
                 echo "NGINX ALREADY INSTALLED."
         fi
