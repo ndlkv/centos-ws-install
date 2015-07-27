@@ -1,8 +1,5 @@
 #!/bin/bash
 clear
-$uri="$uri"
-$document_root="$document_root"
-$fastcgi_script_name="$fastcgi_script_name"
 printf %$(tput cols)s |tr " " "="
 echo   "CENTOS WEB SERVER AUTO-INSTALLER"
 printf %$(tput cols)s |tr " " "="
