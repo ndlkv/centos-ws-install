@@ -32,6 +32,8 @@ yum install php-mysql
 yum install php-fpm
 sed -i "/;cgi.fix_pathinfo=1/c\cgi.fix_pathinfo=0" /etc/php.ini
 sed -i "/listen = 127.0.0.1:9000/c\listen = /var/run/php-fpm/php-fpm.sock" /etc/php-fpm.d/www.conf
+sed -i "/user = apache/c\user = nginx" /etc/php-fpm.d/www.conf
+sed -i "/group = apache/c\group = nginx" /etc/php-fpm.d/www.conf
 systemctl start php-fpm
 
 #DEFAULT CONF FILE /etc/nginx/conf.d/default.conf
